@@ -1,1 +1,1 @@
-# areg
+# ucsd-antibody-registry
