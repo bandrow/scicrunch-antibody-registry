@@ -13,6 +13,8 @@ harness:
     path: /api/ready
   dependencies:
     build:
+    - cloudharness-base
+    - cloudharness-frontend-build
     - cloudharness-django
     hard:
     - common

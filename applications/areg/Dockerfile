@@ -29,7 +29,7 @@ COPY backend/requirements.txt backend/setup.py ${APP_DIR}
 RUN python3 -m pip install -e .
 
 COPY backend ${APP_DIR}
-RUN python3 manage.py collectstatic --noinput
+# RUN python3 manage.py collectstatic --noinput
 
 COPY --from=frontend /usr/src/app/dist ${APP_DIR}/static/www
 
