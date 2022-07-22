@@ -13,10 +13,14 @@ harness:
     path: /api/ready
   dependencies:
     build:
-    - cloudharness-base
     - cloudharness-frontend-build
     - cloudharness-django
     hard:
     - common
     - accounts
     - events
+  use_services:
+  - name: common
+  database:
+    auto: true
+    type: postgres
