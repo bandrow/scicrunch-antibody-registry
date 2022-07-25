@@ -1,16 +1,17 @@
-import React from 'react';
-import './styles/style.less';
+import React from "react";
+import "./styles/style.less";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import RestTest from './components/RestTest';
-
+import LandingTest from "./components/LandingTest";
+import AntibodiesTable from "./components/AntibodiesTable";
 
 const Main = () => (
-    <>
-      <img src="/assets/icon.png" />
-      <h1>Sample React application is working!</h1>
-      <RestTest />
-      <p>See api documentation <a href="/api/ui">here</a></p>
-    </>
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={LandingTest} />
+      <Route exact path="/list" component={AntibodiesTable} />
+    </Switch>
+  </BrowserRouter>
 );
 
 export default Main;
