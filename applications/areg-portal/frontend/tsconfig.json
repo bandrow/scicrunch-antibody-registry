@@ -5,18 +5,17 @@
     "noImplicitAny": false,
     "module": "commonjs",
     "target": "es2017",
-    "stripInternal":true,
+    "stripInternal": true,
     "skipLibCheck": true,
-    "alwaysStrict":false,
+    "alwaysStrict": false,
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": false,
     "strict": false,
     "noUnusedLocals": false,
     "jsx": "react",
     "types": [],
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "resolveJsonModule": true
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
