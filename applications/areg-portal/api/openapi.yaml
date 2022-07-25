@@ -73,3 +73,5 @@ components:
       properties:
         response:
           type: string
+security:
+- bearerAuth: []

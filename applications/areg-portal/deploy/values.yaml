@@ -31,4 +31,3 @@ harness:
   database:
     auto: true
     type: postgres
-  name: areg-portal
