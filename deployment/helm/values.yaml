@@ -2,7 +2,7 @@ local: true
 secured_gatekeepers: true
 domain: areg.local
 namespace: areg
-mainapp: accounts
+mainapp: areg-portal
 registry:
   name: ''
   secret: ''
@@ -25,7 +25,7 @@ apps:
       deployment:
         auto: true
         replicas: 1
-        image: cloudharness/accounts:latest
+        image: areg/accounts:latest
         name: accounts
         port: 8080
         resources: &id001
@@ -126,7 +126,7 @@ apps:
       pass: metacell
       user: admin
       role: administrator
-    image: cloudharness/accounts:latest
+    image: areg/accounts:latest
     task-images: {}
     name: accounts
     port: 8080
@@ -148,7 +148,7 @@ apps:
       deployment:
         auto: true
         replicas: 1
-        image: cloudharness/events:latest
+        image: areg/events:latest
         name: events
         port: 9000
         resources: &id002
@@ -236,7 +236,7 @@ apps:
         requests:
           cpu: 10m
           memory: 100Mi
-    image: cloudharness/events:latest
+    image: areg/events:latest
     task-images: {}
     name: events
     port: 9000
@@ -259,7 +259,7 @@ apps:
       deployment:
         auto: true
         replicas: 1
-        image: cloudharness/common:latest
+        image: areg/common:latest
         name: common
         port: 8080
         resources: &id003
@@ -317,15 +317,15 @@ apps:
             memory: 2Gi
             cpu: 1000m
       name: common
-    image: cloudharness/common:latest
+    image: areg/common:latest
     task-images:
-      cloudharness-flask: cloudharness/cloudharness-flask:latest
+      cloudharness-flask: areg/cloudharness-flask:latest
     name: common
     port: 8080
     resources: *id003
-  areg:
+  areg_portal:
     harness:
-      subdomain: areg
+      subdomain: areg-portal
       aliases: []
       domain: null
       dependencies:
@@ -337,16 +337,19 @@ apps:
         build:
         - cloudharness-frontend-build
         - cloudharness-django
-      secured: false
+      secured: true
       uri_role_mapping:
       - uri: /*
         roles:
-        - administrator
+        - areg_portal:areg_portal-administrator
+        - areg_portal:areg_portal-manager
+        - areg_portal:areg_portal-user
+        require-any-role: true
       deployment:
         auto: true
         replicas: 1
-        image: cloudharness/areg:latest
-        name: areg
+        image: areg/areg-portal:latest
+        name: areg-portal
         port: 8080
         resources: &id004
           requests:
@@ -357,14 +360,14 @@ apps:
             cpu: 500m
       service:
         auto: true
-        name: areg
+        name: areg-portal
         port: 8080
       secrets: null
       use_services:
       - name: common
       database:
         auto: true
-        name: areg-db
+        name: areg-portal-db
         type: postgres
         size: 1Gi
         user: mnp
@@ -407,12 +410,12 @@ apps:
         path: /api/live
       readinessProbe:
         path: /api/ready
-      name: areg
-    image: cloudharness/areg:latest
+      name: areg-portal
+    image: areg/areg-portal:latest
     task-images:
-      cloudharness-frontend-build: cloudharness/cloudharness-frontend-build:latest
-      cloudharness-django: cloudharness/cloudharness-django:latest
-    name: areg
+      cloudharness-frontend-build: areg/cloudharness-frontend-build:latest
+      cloudharness-django: areg/cloudharness-django:latest
+    name: areg-portal
     port: 8080
     resources: *id004
 env:
@@ -432,10 +435,10 @@ env:
   value: common
 - name: CH_COMMON_NAME
   value: common
-- name: CH_AREG_SUBDOMAIN
-  value: areg
-- name: CH_AREG_NAME
-  value: areg
+- name: CH_AREG_PORTAL_SUBDOMAIN
+  value: areg-portal
+- name: CH_AREG_PORTAL_NAME
+  value: areg-portal
 - name: CH_DOMAIN
   value: areg.local
 - name: CH_IMAGE_REGISTRY
@@ -452,7 +455,7 @@ ingress:
   letsencrypt:
     email: filippo@metacell.us
 backup:
-  active: true
+  active: false
   keep_days: '7'
   keep_weeks: '4'
   keep_months: '6'
@@ -467,11 +470,11 @@ backup:
     limits:
       memory: 64Mi
       cpu: 50m
-name: cloudharness
-task-images:
-  cloudharness-flask: cloudharness/cloudharness-flask:latest
-  cloudharness-frontend-build: cloudharness/cloudharness-frontend-build:latest
-  cloudharness-django: cloudharness/cloudharness-django:latest
-  cloudharness-base: cloudharness/cloudharness-base:latest
+name: areg
 tls: false
+task-images:
+  cloudharness-flask: areg/cloudharness-flask:latest
+  cloudharness-frontend-build: areg/cloudharness-frontend-build:latest
+  cloudharness-django: areg/cloudharness-django:latest
+  cloudharness-base: areg/cloudharness-base:latest
 localIp: 192.168.49.2

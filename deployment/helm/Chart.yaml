@@ -1,12 +1,13 @@
 apiVersion: v1
 appVersion: 0.0.1
-description: CloudHarness Helm Chart
-name: cloudharness
+description: Areg Helm Chart
+name: areg
 version: 0.0.1
 maintainers:
-- name: Filippo Ledda
-  email: filippo@metacell.us
-- name: Zoran Sinnema
-  email: zoran@metacell.us
+- email: zoran@metacell.us
+  name: Zoran Sinnema
 metadata:
+  name: areg
   namespace: areg
+  labels:
+    app.kubernetes.io/managed-by: Helm

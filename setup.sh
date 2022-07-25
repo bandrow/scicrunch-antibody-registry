@@ -15,7 +15,7 @@ kubectl create rolebinding areg-admin-default --clusterrole=admin --serviceaccou
 eval $(minikube docker-env)
 kubectl config use-context minikube
 
-harness-deployment cloud-harness . -l -d areg.local -dtls -n areg -e dev -i areg
+harness-deployment cloud-harness . -l -d areg.local -dtls -n areg -e dev -i areg-portal
 
 kubectl config use-context minikube
 

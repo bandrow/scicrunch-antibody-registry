@@ -1,0 +1,34 @@
+harness:
+  subdomain: areg-portal
+  secured: true
+  service:
+    port: 8080
+    auto: true
+  deployment:
+    auto: true
+    port: 8080
+  livenessProbe:
+    path: /api/live
+  readinessProbe:
+    path: /api/ready
+  dependencies:
+    build:
+    - cloudharness-frontend-build
+    - cloudharness-django
+    hard:
+    - common
+    - accounts
+    - events
+  use_services:
+  - name: common
+  uri_role_mapping:
+  - uri: /*
+    roles:
+    - areg_portal:areg_portal-administrator
+    - areg_portal:areg_portal-manager
+    - areg_portal:areg_portal-user
+    require-any-role: true
+  database:
+    auto: true
+    type: postgres
+  name: areg-portal

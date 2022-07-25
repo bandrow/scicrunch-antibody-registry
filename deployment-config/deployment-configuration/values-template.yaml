@@ -1,5 +1,0 @@
-domain: areg.metacell.us
-mainapp: areg
-tls: true
-backup:
-  active: false
