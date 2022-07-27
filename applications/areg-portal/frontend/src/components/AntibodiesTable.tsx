@@ -1,6 +1,6 @@
 import React from "react";
 //MUI
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import {
   GridRowsProp,
   GridColDef,
@@ -27,15 +27,30 @@ function joinNameAndId(params: GridValueGetterParams) {
 const rows: GridRowsProp = getAntibodies();
 
 const columns: GridColDef[] = [
-  { field: "ab_name", headerName: "Name", minWidth: 100, flex: 1 },
-  { field: "ab_id", headerName: "ID", minWidth: 100, flex: 1 },
+  {
+    field: "ab_name",
+    headerName: "Name",
+    minWidth: 100,
+    flex: 1,
+  },
+  {
+    field: "ab_id",
+    headerName: "ID",
+    minWidth: 100,
+    flex: 1,
+  },
   {
     field: "ab_name_id",
     headerName: "Name & ID",
     width: 250,
     valueGetter: joinNameAndId,
   },
-  { field: "ab_target", headerName: "Target antigen", minWidth: 100, flex: 1 },
+  {
+    field: "ab_target",
+    headerName: "Target antigen",
+    minWidth: 100,
+    flex: 1,
+  },
   {
     field: "target_species",
     headerName: "Target species",
@@ -48,26 +63,72 @@ const columns: GridColDef[] = [
     minWidth: 100,
     flex: 1,
   },
-  { field: "clonality", headerName: "Clonality", minWidth: 100, flex: 1 },
-  { field: "comments", headerName: "Comments", minWidth: 100, flex: 1 },
-  { field: "clone_id", headerName: "Clone ID", minWidth: 100, flex: 1 },
-  { field: "host", headerName: "Host", minWidth: 100, flex: 1 },
-  { field: "vendor", headerName: "Vendor", minWidth: 100, flex: 1 },
-  { field: "catalog_num", headerName: "Cat Num", minWidth: 100, flex: 1 },
+  {
+    field: "clonality",
+    headerName: "Clonality",
+    minWidth: 100,
+    flex: 1,
+  },
+  {
+    field: "comments",
+    headerName: "Comments",
+    minWidth: 100,
+    flex: 1,
+  },
+  {
+    field: "clone_id",
+    headerName: "Clone ID",
+    minWidth: 100,
+    flex: 1,
+  },
+  {
+    field: "host",
+    headerName: "Host",
+    minWidth: 100,
+    flex: 1,
+  },
+  {
+    field: "vendor",
+    headerName: "Vendor",
+    minWidth: 100,
+    flex: 1,
+  },
+  {
+    field: "catalog_num",
+    headerName: "Cat Num",
+    minWidth: 100,
+    flex: 1,
+  },
 ];
 
 function AntibodiesTable() {
   return (
     <Content>
-      <Box sx={{ height: "100vh" }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          pageSize={20}
-          rowsPerPageOptions={[20]}
-          checkboxSelection
-          disableSelectionOnClick
-        />
+      <Box sx={{ height: "80vh" }} mt={16}>
+        <Box
+          sx={{
+            display: "flex",
+            height: "100%",
+            "& .MuiDataGrid-columnHeadersInner": {
+              backgroundColor: "#EAECF0",
+            },
+            "& .MuiDataGrid-cell": {
+              backgroundColor: "#FCFCFD",
+            },
+          }}
+        >
+          <Box sx={{ flexGrow: 1 }}>
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              pageSize={20}
+              rowsPerPageOptions={[20]}
+              checkboxSelection
+              disableSelectionOnClick
+              components={{ Toolbar: GridToolbar }}
+            />
+          </Box>
+        </Box>
       </Box>
     </Content>
   );
