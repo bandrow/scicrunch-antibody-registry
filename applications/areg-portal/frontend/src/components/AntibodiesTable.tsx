@@ -5,19 +5,20 @@ import {
   GridToolbar,
   GridRowsProp,
   GridColDef,
-  GridValueGetterParams,
   GridRenderCellParams,
+  GridAlignment,
 } from "@mui/x-data-grid";
 import { Typography, Box } from "@mui/material";
 
 //project imports
-import { getAntibodies } from "../utils/helpers";
-import Content from "./UI/Content";
+import { getAntibodies } from "../services/AntibodiesService";
 
-const renderNameAndId = (props: GridRenderCellParams<String>) => {
+const RenderNameAndId = (props: GridRenderCellParams<String>) => {
   return (
     <Box>
-      <Typography variant="body2">{props.row.ab_name}</Typography>
+      <Typography variant="body2" align="left">
+        {props.row.ab_name}
+      </Typography>
       <Typography variant="caption" align="left" component="div">
         {props.row.ab_id}
       </Typography>
@@ -25,7 +26,7 @@ const renderNameAndId = (props: GridRenderCellParams<String>) => {
   );
 };
 
-const renderTargetAntigenAndSpecies = (props: GridRenderCellParams<String>) => {
+const RenderTargetAntigenAndSpecies = (props: GridRenderCellParams<String>) => {
   return (
     <Box>
       <Typography variant="body2">
@@ -37,121 +38,120 @@ const renderTargetAntigenAndSpecies = (props: GridRenderCellParams<String>) => {
 
 const rows: GridRowsProp = getAntibodies();
 
+const columnsDefaultProps = {
+  flex: 1 as number,
+  headerAlign: "center" as GridAlignment,
+  align: "center" as GridAlignment,
+};
+
 const columns: GridColDef[] = [
   {
+    ...columnsDefaultProps,
     field: "ab_name",
     headerName: "Name",
-    minWidth: 75,
-    flex: 1,
     hide: true,
   },
   {
+    ...columnsDefaultProps,
     field: "ab_id",
     headerName: "ID",
-    minWidth: 75,
-    flex: 1,
     hide: true,
   },
   {
+    ...columnsDefaultProps,
     field: "ab_name_id",
     headerName: "Name & ID",
-    width: 200,
-    renderCell: renderNameAndId,
+    flex: 2,
+    renderCell: RenderNameAndId,
+    headerAlign: "left",
+    align: "left",
   },
   {
+    ...columnsDefaultProps,
     field: "ab_target",
     headerName: "Target antigen",
-    minWidth: 75,
-    flex: 1,
     hide: true,
   },
   {
+    ...columnsDefaultProps,
     field: "target_species",
     headerName: "Target species",
-    minWidth: 75,
-    flex: 1,
     hide: true,
   },
   {
+    ...columnsDefaultProps,
     field: "target_ant_spec",
     headerName: "Target antigen & species",
-    width: 200,
-    renderCell: renderTargetAntigenAndSpecies,
+    renderCell: RenderTargetAntigenAndSpecies,
   },
   {
+    ...columnsDefaultProps,
     field: "proper_citation",
     headerName: "Proper citation",
-    minWidth: 75,
-    flex: 1,
+    flex: 2,
   },
   {
+    ...columnsDefaultProps,
     field: "clonality",
     headerName: "Clonality",
-    minWidth: 75,
-    flex: 1,
   },
   {
+    ...columnsDefaultProps,
     field: "comments",
     headerName: "Comments",
-    minWidth: 75,
-    flex: 1,
+    flex: 2,
   },
   {
+    ...columnsDefaultProps,
     field: "clone_id",
     headerName: "Clone ID",
-    minWidth: 75,
-    flex: 1,
   },
   {
+    ...columnsDefaultProps,
     field: "host",
     headerName: "Host",
-    minWidth: 75,
-    flex: 1,
   },
   {
+    ...columnsDefaultProps,
     field: "vendor",
     headerName: "Vendor",
-    minWidth: 75,
-    flex: 1,
   },
   {
+    ...columnsDefaultProps,
     field: "catalog_num",
     headerName: "Cat Num",
-    minWidth: 75,
-    flex: 1,
   },
 ];
 
 function AntibodiesTable() {
   return (
-    <Content>
-      <Box sx={{ height: "80vh" }} mt={16}>
-        <Box
-          sx={{
-            display: "flex",
-            height: "100%",
-            "& .MuiDataGrid-columnHeadersInner": {
-              backgroundColor: "#EAECF0",
-            },
-            "& .MuiDataGrid-cell": {
-              backgroundColor: "#FCFCFD",
-            },
-          }}
-        >
-          <Box sx={{ flexGrow: 1 }}>
-            <DataGrid
-              rows={rows}
-              columns={columns}
-              pageSize={20}
-              rowsPerPageOptions={[20]}
-              checkboxSelection
-              disableSelectionOnClick
-              components={{ Toolbar: GridToolbar }}
-            />
-          </Box>
+    <Box sx={{ height: "80vh" }} mt={16}>
+      <Box
+        sx={{
+          display: "flex",
+          height: "100%",
+          "& .MuiDataGrid-columnHeadersInner": {
+            backgroundColor: "#EAECF0",
+          },
+          "& .MuiDataGrid-cell": {
+            backgroundColor: "#FCFCFD",
+          },
+        }}
+      >
+        <Box sx={{ flexGrow: 1 }}>
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={20}
+            rowsPerPageOptions={[20]}
+            checkboxSelection
+            disableSelectionOnClick
+            components={{ Toolbar: GridToolbar }}
+            getRowHeight={() => "auto"}
+          />
         </Box>
       </Box>
-    </Content>
+    </Box>
   );
 }
 

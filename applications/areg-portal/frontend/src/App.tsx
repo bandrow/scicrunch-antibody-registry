@@ -1,17 +1,16 @@
 import React from "react";
 import "./styles/style.less";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Container, CssBaseline } from "@mui/material";
 
-import LandingTest from "./components/LandingTest";
 import AntibodiesTable from "./components/AntibodiesTable";
 
 const Main = () => (
-  <BrowserRouter>
-    <Switch>
-      <Route exact path="/" component={LandingTest} />
-      <Route exact path="/list" component={AntibodiesTable} />
-    </Switch>
-  </BrowserRouter>
+  <>
+    <CssBaseline />
+    <Container maxWidth="xl">
+      <AntibodiesTable />
+    </Container>
+  </>
 );
 
 export default Main;
