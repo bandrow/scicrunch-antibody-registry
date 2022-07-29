@@ -37,7 +37,7 @@ const RenderTargetAntigenAndSpecies = (props: GridRenderCellParams<String>) => {
 };
 
 const columnsDefaultProps = {
-  flex: 1 as number,
+  flex: 1,
   headerAlign: "center" as GridAlignment,
   align: "center" as GridAlignment,
 };
@@ -47,12 +47,14 @@ const columns: GridColDef[] = [
     ...columnsDefaultProps,
     field: "ab_name",
     headerName: "Name",
+    flex: 1,
     hide: true,
   },
   {
     ...columnsDefaultProps,
     field: "ab_id",
     headerName: "ID",
+    flex: 1,
     hide: true,
   },
   {
@@ -68,12 +70,14 @@ const columns: GridColDef[] = [
     ...columnsDefaultProps,
     field: "ab_target",
     headerName: "Target antigen",
+    flex: 1,
     hide: true,
   },
   {
     ...columnsDefaultProps,
     field: "target_species",
     headerName: "Target species",
+    flex: 1,
     hide: true,
   },
   {
@@ -92,32 +96,37 @@ const columns: GridColDef[] = [
     ...columnsDefaultProps,
     field: "clonality",
     headerName: "Clonality",
+    flex: 1,
   },
   {
     ...columnsDefaultProps,
     field: "comments",
     headerName: "Comments",
-    flex: 2,
+    flex: 3,
   },
   {
     ...columnsDefaultProps,
     field: "clone_id",
     headerName: "Clone ID",
+    flex: 1,
   },
   {
     ...columnsDefaultProps,
     field: "host",
     headerName: "Host",
+    flex: 1,
   },
   {
     ...columnsDefaultProps,
     field: "vendor",
     headerName: "Vendor",
+    flex: 1,
   },
   {
     ...columnsDefaultProps,
     field: "catalog_num",
     headerName: "Cat Num",
+    flex: 1,
   },
 ];
 
