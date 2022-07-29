@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 //MUI
 import {
   DataGrid,
@@ -35,8 +35,6 @@ const RenderTargetAntigenAndSpecies = (props: GridRenderCellParams<String>) => {
     </Box>
   );
 };
-
-const rows: GridRowsProp = getAntibodies();
 
 const columnsDefaultProps = {
   flex: 1 as number,
@@ -124,6 +122,18 @@ const columns: GridColDef[] = [
 ];
 
 function AntibodiesTable() {
+  const [antibodiesList, setAntibodiesList] = useState([]);
+
+  const fetchAntibodies = () => {
+    getAntibodies()
+      .then((res) => {
+        return setAntibodiesList(res);
+      })
+      .catch((err) => alert(err));
+  };
+
+  useEffect(fetchAntibodies, []);
+
   return (
     <Box sx={{ height: "80vh" }} mt={16}>
       <Box
@@ -140,7 +150,7 @@ function AntibodiesTable() {
       >
         <Box sx={{ flexGrow: 1 }}>
           <DataGrid
-            rows={rows}
+            rows={antibodiesList}
             columns={columns}
             pageSize={20}
             rowsPerPageOptions={[20]}
