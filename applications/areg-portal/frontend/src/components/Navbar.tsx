@@ -7,11 +7,8 @@ const Navbar = () => {
   return (
     <Box>
       <AppBar sx={{ bgcolor: "background.paper" }}>
-        <Toolbar>
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <Box component="img" src="./assets/logo.svg" mx={1} />
-          <Typography variant="h6" noWrap sx={{ flexGrow: 1 }}>
-            Antibodies Registry
-          </Typography>
           <Searchbar />
         </Toolbar>
       </AppBar>

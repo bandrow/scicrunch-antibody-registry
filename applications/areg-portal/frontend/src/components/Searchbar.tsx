@@ -7,10 +7,7 @@ import SearchIcon from "@mui/icons-material/Search";
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
+  backgroundColor: theme.palette.grey["100"],
   marginRight: theme.spacing(2),
   marginLeft: 0,
   width: "100%",
@@ -28,10 +25,11 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  color: theme.palette.grey["400"],
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
+  color: theme.palette.grey["600"],
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
@@ -46,14 +44,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Searchbar() {
   return (
-    //<Box sx={{ bgcolor: "primary.main" }}> Searchbar</Box>
-    <Box sx={{ flexGrow: 1, bgcolor: "primary.main" }}>
+    <Box sx={{ flexGrow: 1 }}>
       <Search>
         <SearchIconWrapper>
           <SearchIcon />
         </SearchIconWrapper>
         <StyledInputBase
-          placeholder="Search…"
+          placeholder="Search for catalog number…"
           inputProps={{ "aria-label": "search" }}
         />
       </Search>
