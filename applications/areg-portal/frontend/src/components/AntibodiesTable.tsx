@@ -144,7 +144,7 @@ function AntibodiesTable() {
   useEffect(fetchAntibodies, []);
 
   return (
-    <Box sx={{ height: "80vh" }} mt={16}>
+    <Box sx={{ height: "80vh" }}>
       <Box
         sx={{
           display: "flex",
