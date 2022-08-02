@@ -10,7 +10,8 @@ const Search = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.grey["100"],
   marginRight: theme.spacing(2),
   marginLeft: 0,
-  width: "100%",
+  //width: "100%",
+  maxWidth: "30rem",
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(3),
     width: "auto",
@@ -44,16 +45,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Searchbar() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Search>
-        <SearchIconWrapper>
-          <SearchIcon />
-        </SearchIconWrapper>
-        <StyledInputBase
-          placeholder="Search for catalog number…"
-          inputProps={{ "aria-label": "search" }}
-        />
-      </Search>
-    </Box>
+    <Search sx={{ flexGrow: 1 }}>
+      <SearchIconWrapper>
+        <SearchIcon />
+      </SearchIconWrapper>
+      <StyledInputBase
+        placeholder="Search for catalog number…"
+        inputProps={{ "aria-label": "search" }}
+      />
+    </Search>
   );
 }
