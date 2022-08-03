@@ -150,7 +150,7 @@ function AntibodiesTable() {
           display: "flex",
           height: "100%",
           "& .MuiDataGrid-columnHeadersInner": {
-            backgroundColor: "#EAECF0",
+            backgroundColor: "#F9FAFB",
           },
           "& .MuiDataGrid-cell": {
             backgroundColor: "#FCFCFD",

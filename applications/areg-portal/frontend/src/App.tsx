@@ -5,7 +5,7 @@ import { ThemeProvider } from "@mui/material/styles";
 
 import theme from "./theme/Theme";
 import AntibodiesTable from "./components/AntibodiesTable";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/NavBar/Navbar";
 
 const Main = () => (
   <ThemeProvider theme={theme}>
