@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import {
   DataGrid,
   GridToolbar,
-  GridRowsProp,
   GridColDef,
   GridRenderCellParams,
   GridAlignment,
@@ -146,16 +145,13 @@ function AntibodiesTable() {
   return (
     <Box sx={{ height: "80vh" }}>
       <Box
-        sx={{
+        sx={(theme) => ({
           display: "flex",
           height: "100%",
           "& .MuiDataGrid-columnHeadersInner": {
-            backgroundColor: "#F9FAFB",
+            backgroundColor: theme.palette.grey[50],
           },
-          "& .MuiDataGrid-cell": {
-            backgroundColor: "#FCFCFD",
-          },
-        }}
+        })}
       >
         <Box sx={{ flexGrow: 1 }}>
           <DataGrid

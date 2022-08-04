@@ -2,7 +2,6 @@ import { createTheme } from "@mui/material/styles";
 
 declare module "@mui/material/styles" {
   interface Theme {}
-  // allow configuration using `createTheme`
   interface ThemeOptions {}
 }
 
@@ -27,8 +26,17 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: "'proxima-nova', 'sans-serif'",
+    fontSize: 16,
   },
   components: {
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#fff",
+        },
+      },
+    },
+
     MuiButton: {
       styleOverrides: {
         root: {

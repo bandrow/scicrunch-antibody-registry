@@ -8,8 +8,6 @@ const Search = styled("div")(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
   backgroundColor: theme.palette.grey["100"],
   marginRight: theme.spacing(2),
-  marginLeft: 0,
-  //width: "100%",
   maxWidth: "30rem",
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(3),
@@ -30,8 +28,9 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: theme.palette.grey["600"],
+  width: "100%",
+  fontSize: "1rem",
   "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
@@ -46,9 +45,14 @@ export default function Searchbar() {
   return (
     <Search sx={{ flexGrow: 1 }}>
       <SearchIconWrapper>
-        <SearchIcon />
+        <SearchIcon
+          sx={(theme) => ({
+            width: theme.spacing(2.5),
+            heigth: theme.spacing(2.5),
+          })}
+        />
       </SearchIconWrapper>
-      <StyledInputBase placeholder="Search…" />
+      <StyledInputBase placeholder="Search for catalog number…" />
     </Search>
   );
 }
