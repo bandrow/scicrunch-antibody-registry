@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Button, Toolbar } from "@mui/material";
 import Searchbar from "./Searchbar";
 import NavTabs from "./NavTabs";
 //import logo from "./assets/logo.svg";

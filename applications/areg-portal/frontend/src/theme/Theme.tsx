@@ -28,6 +28,22 @@ const theme = createTheme({
   typography: {
     fontFamily: "'proxima-nova', 'sans-serif'",
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+        },
+      },
+    },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+        },
+      },
+    },
+  },
 });
 
 export default theme;

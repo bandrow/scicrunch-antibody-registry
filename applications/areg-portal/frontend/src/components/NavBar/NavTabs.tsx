@@ -11,13 +11,19 @@ interface LinkTabProps {
 function LinkTab(props: LinkTabProps) {
   return (
     <Tab
+      sx={(theme) => ({
+        "&.Mui-selected": {
+          color: theme.palette.grey[900],
+          bgcolor: theme.palette.grey[100],
+          borderRadius: theme.spacing(1),
+        },
+        "&.MuiButtonBase-root": {
+          minHeight: theme.spacing(5),
+        },
+      })}
       component="a"
       onClick={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         event.preventDefault();
-      }}
-      //make this for all the buttons
-      sx={{
-        textTransform: "none",
       }}
       {...props}
     />
@@ -33,7 +39,18 @@ export default function NavTabs() {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Tabs value={value} onChange={handleChange} aria-label="nav tabs example">
+      <Tabs
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          "& .MuiTabs-indicator": {
+            display: "none",
+          },
+        }}
+        value={value}
+        onChange={handleChange}
+        aria-label="nav tabs example"
+      >
         <LinkTab label="Home" href="" />
         <LinkTab label="About" href="" />
       </Tabs>
