@@ -1,5 +1,4 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
@@ -15,7 +14,7 @@ function LinkTab(props: LinkTabProps) {
         "&.Mui-selected": {
           color: theme.palette.grey[900],
           bgcolor: theme.palette.grey[100],
-          borderRadius: theme.spacing(1),
+          borderRadius: theme.shape.borderRadius,
         },
         "&.MuiButtonBase-root": {
           minHeight: theme.spacing(5),
@@ -38,22 +37,20 @@ export default function NavTabs() {
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
-      <Tabs
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          "& .MuiTabs-indicator": {
-            display: "none",
-          },
-        }}
-        value={value}
-        onChange={handleChange}
-        aria-label="nav tabs example"
-      >
-        <LinkTab label="Home" href="" />
-        <LinkTab label="About" href="" />
-      </Tabs>
-    </Box>
+    <Tabs
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        "& .MuiTabs-indicator": {
+          display: "none",
+        },
+      }}
+      value={value}
+      onChange={handleChange}
+      aria-label="nav tabs example"
+    >
+      <LinkTab label="Home" href="" />
+      <LinkTab label="About" href="" />
+    </Tabs>
   );
 }

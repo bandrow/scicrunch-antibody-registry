@@ -30,6 +30,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: theme.palette.grey["600"],
   width: "100%",
   fontSize: "1rem",
+  minHeight: "2.5rem",
   "& .MuiInputBase-input": {
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
@@ -46,10 +47,10 @@ export default function Searchbar() {
     <Search sx={{ flexGrow: 1 }}>
       <SearchIconWrapper>
         <SearchIcon
-          sx={(theme) => ({
-            width: theme.spacing(2.5),
-            heigth: theme.spacing(2.5),
-          })}
+          sx={{
+            width: "1.25rem",
+            heigth: "1.25rem",
+          }}
         />
       </SearchIconWrapper>
       <StyledInputBase placeholder="Search for catalog number…" />

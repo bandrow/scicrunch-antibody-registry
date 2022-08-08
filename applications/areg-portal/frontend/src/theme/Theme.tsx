@@ -24,6 +24,9 @@ const theme = createTheme({
       light: "#DFEBF8",
     },
   },
+  shape: {
+    borderRadius: "8px",
+  },
   typography: {
     fontFamily: "'proxima-nova', 'sans-serif'",
     fontSize: 16,

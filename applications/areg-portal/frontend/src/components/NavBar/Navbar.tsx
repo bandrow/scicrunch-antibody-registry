@@ -1,8 +1,8 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { AppBar, Box, Button, Toolbar } from "@mui/material";
+import { AppBar, Box, Button, Container, Toolbar } from "@mui/material";
 import Searchbar from "./Searchbar";
-import NavTabs from "./NavTabs";
+import NavLinks from "./NavLinks";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 const HelpIconWrapper = styled("div")(({ theme }) => ({
@@ -17,28 +17,53 @@ const Navbar = () => {
   return (
     <Box>
       <AppBar>
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-            <Box component="img" src="./assets/logo.svg" mx={1} />
-            <NavTabs />
-          </Box>
-          <Searchbar />
-          <Box
+        <Container maxWidth="xl">
+          <Toolbar
             sx={{
               display: "flex",
+              justifyContent: "space-between",
             }}
+            disableGutters
           >
-            <HelpIconWrapper>
-              <HelpOutlineIcon
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                flexGrow: 1,
+                height: "2.5rem",
+              }}
+            >
+              <Box
+                height="100%"
                 sx={(theme) => ({
-                  width: theme.spacing(2.5),
-                  heigth: theme.spacing(2.5),
+                  borderRight: `0.094rem solid ${theme.palette.grey[100]}`,
+                  pr: theme.spacing(2),
                 })}
-              />
-            </HelpIconWrapper>
-            <Button>Log in / Register</Button>
-          </Box>
-        </Toolbar>
+              >
+                <Box component="img" src="./assets/logo.svg" />
+              </Box>
+              <NavLinks />
+            </Box>
+            <Searchbar />
+            <Box
+              sx={{
+                display: "flex",
+                flexGrow: 1,
+                justifyContent: "flex-end",
+              }}
+            >
+              <HelpIconWrapper>
+                <HelpOutlineIcon
+                  sx={{
+                    width: "1.25rem",
+                    heigth: "1.25rem",
+                  }}
+                />
+              </HelpIconWrapper>
+              <Button>Log in / Register</Button>
+            </Box>
+          </Toolbar>
+        </Container>
       </AppBar>
       <Box sx={(theme) => ({ ...theme.mixins.toolbar })} component="div" />
     </Box>

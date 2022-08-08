@@ -9,8 +9,8 @@ import Navbar from "./components/NavBar/Navbar";
 
 const Main = () => (
   <ThemeProvider theme={theme}>
-    <Navbar />
     <CssBaseline />
+    <Navbar />
     <Container maxWidth="xl" sx={{ my: 1 }}>
       <AntibodiesTable />
     </Container>
