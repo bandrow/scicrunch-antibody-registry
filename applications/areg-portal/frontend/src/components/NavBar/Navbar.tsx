@@ -1,6 +1,14 @@
 import React from "react";
-import { styled } from "@mui/material/styles";
-import { AppBar, Box, Button, Container, Toolbar } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Button,
+  Container,
+  Divider,
+  IconButton,
+  Stack,
+  Toolbar,
+} from "@mui/material";
 import Searchbar from "./Searchbar";
 import NavLinks from "./NavLinks";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
@@ -8,7 +16,7 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 const Navbar = () => {
   return (
     <Box>
-      <AppBar>
+      <AppBar elevation={0}>
         <Container maxWidth="xl">
           <Toolbar
             sx={{
@@ -25,16 +33,18 @@ const Navbar = () => {
                 height: "2.5rem",
               }}
             >
-              <Box
-                height="100%"
-                sx={(theme) => ({
-                  borderRight: `0.094rem solid ${theme.palette.grey[100]}`,
-                  pr: theme.spacing(2),
-                })}
-              >
+              <Stack direction="row" spacing={2}>
                 <Box component="img" src="./assets/logo.svg" />
-              </Box>
-              <NavLinks />
+                <Divider
+                  orientation="vertical"
+                  flexItem
+                  sx={(theme) => ({
+                    borderColor: theme.palette.grey[100],
+                    borderRightWidth: "1.5px",
+                  })}
+                />
+                <NavLinks />
+              </Stack>
             </Box>
             <Searchbar />
             <Box
@@ -53,12 +63,14 @@ const Navbar = () => {
                   color: theme.palette.grey["400"],
                 })}
               >
-                <HelpOutlineIcon
-                  sx={{
-                    width: "1.25rem",
-                    heigth: "1.25rem",
-                  }}
-                />
+                <IconButton disableRipple>
+                  <HelpOutlineIcon
+                    sx={{
+                      width: "1.25rem",
+                      heigth: "1.25rem",
+                    }}
+                  />
+                </IconButton>
               </Box>
               <Button>Log in / Register</Button>
             </Box>

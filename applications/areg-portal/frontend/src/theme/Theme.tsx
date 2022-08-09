@@ -30,6 +30,14 @@ const theme = createTheme({
   typography: {
     fontFamily: "'proxima-nova', 'sans-serif'",
     fontSize: 16,
+    h1: {
+      fontFamily: "'proxima-nova', 'sans-serif'",
+      fontWeight: 600,
+      fontSize: "1.875rem",
+    },
+    subtitle1: {
+      fontSize: "0.875rem",
+    },
   },
   components: {
     MuiAppBar: {

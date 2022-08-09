@@ -1,4 +1,4 @@
-import { Box, Link } from "@mui/material";
+import { Link } from "@mui/material";
 import React, { useState } from "react";
 
 interface LinkButtonProps {
@@ -15,7 +15,6 @@ const LinkButton = (props: LinkButtonProps) => {
       underline="none"
       variant="body2"
       sx={(theme) => ({
-        mx: 2,
         fontWeight: 500,
         color: theme.palette.grey[700],
         px: theme.spacing(1.5),
@@ -47,7 +46,7 @@ const NavLinks = () => {
   };
 
   return (
-    <Box sx={{ display: "flex", flexWrap: "nowrap" }}>
+    <>
       <LinkButton
         className={isHomeViewActive ? "selected" : ""}
         label="Home"
@@ -60,7 +59,7 @@ const NavLinks = () => {
         href="/"
         onClick={handleOnClick}
       />
-    </Box>
+    </>
   );
 };
 

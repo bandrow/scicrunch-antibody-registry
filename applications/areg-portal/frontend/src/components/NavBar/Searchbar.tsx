@@ -1,38 +1,22 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
-import { Box } from "@mui/material";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import { Box, Stack, Typography } from "@mui/material";
 
 const Search = styled("div")(({ theme }) => ({
   display: "flex",
+  flexGrow: 1,
   borderRadius: theme.shape.borderRadius,
   backgroundColor: theme.palette.grey["100"],
-  marginRight: theme.spacing(2),
-  maxWidth: "30rem",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3),
-    width: "auto",
-  },
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  color: theme.palette.grey["400"],
+  padding: theme.spacing(0.5),
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: theme.palette.grey["600"],
   width: "100%",
   fontSize: "1rem",
-  minHeight: "2.5rem",
   "& .MuiInputBase-input": {
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
@@ -43,16 +27,39 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Searchbar() {
   return (
-    <Search sx={{ flexGrow: 1 }}>
-      <SearchIconWrapper>
+    <Search>
+      <Stack
+        direction="row"
+        spacing={1}
+        display="flex"
+        alignItems="center"
+        width="100%"
+        sx={(theme) => ({ ml: theme.spacing(1) })}
+      >
         <SearchIcon
-          sx={{
-            width: "1.25rem",
-            heigth: "1.25rem",
-          }}
+          sx={(theme) => ({
+            width: "1.3rem",
+            color: theme.palette.grey["400"],
+          })}
         />
-      </SearchIconWrapper>
-      <StyledInputBase placeholder="Search for catalog number…" />
+        <StyledInputBase placeholder="Search for catalog number…" />
+        <Box
+          sx={(theme) => ({
+            bgcolor: "grey.200",
+            maxHeight: "2rem",
+            minWidth: "2rem",
+            borderRadius: "0.375rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            p: theme.spacing(1),
+          })}
+        >
+          <Typography sx={{ color: "grey.400", fontWeight: "bold" }}>
+            /
+          </Typography>
+        </Box>
+      </Stack>
     </Search>
   );
 }
