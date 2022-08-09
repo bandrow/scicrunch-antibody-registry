@@ -25,7 +25,7 @@ const theme = createTheme({
     },
   },
   shape: {
-    borderRadius: "8px",
+    borderRadius: 8,
   },
   typography: {
     fontFamily: "'proxima-nova', 'sans-serif'",
@@ -51,6 +51,13 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           textTransform: "none",
+        },
+      },
+    },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          borderRadius: "8px !important",
         },
       },
     },

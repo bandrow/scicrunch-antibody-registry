@@ -5,14 +5,6 @@ import Searchbar from "./Searchbar";
 import NavLinks from "./NavLinks";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
-const HelpIconWrapper = styled("div")(({ theme }) => ({
-  margin: theme.spacing(0, 2),
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  color: theme.palette.grey["400"],
-}));
-
 const Navbar = () => {
   return (
     <Box>
@@ -52,14 +44,22 @@ const Navbar = () => {
                 justifyContent: "flex-end",
               }}
             >
-              <HelpIconWrapper>
+              <Box
+                sx={(theme) => ({
+                  margin: theme.spacing(0, 2),
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: theme.palette.grey["400"],
+                })}
+              >
                 <HelpOutlineIcon
                   sx={{
                     width: "1.25rem",
                     heigth: "1.25rem",
                   }}
                 />
-              </HelpIconWrapper>
+              </Box>
               <Button>Log in / Register</Button>
             </Box>
           </Toolbar>

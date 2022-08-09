@@ -1,10 +1,11 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
+import { Box } from "@mui/material";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 
 const Search = styled("div")(({ theme }) => ({
-  position: "relative",
+  display: "flex",
   borderRadius: theme.shape.borderRadius,
   backgroundColor: theme.palette.grey["100"],
   marginRight: theme.spacing(2),
@@ -17,8 +18,6 @@ const Search = styled("div")(({ theme }) => ({
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
   pointerEvents: "none",
   display: "flex",
   alignItems: "center",
