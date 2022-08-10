@@ -17,7 +17,6 @@ harness:
     - cloudharness-django
     hard:
     - common
-    - accounts
     - events
   use_services:
   - name: common

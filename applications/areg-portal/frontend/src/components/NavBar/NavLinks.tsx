@@ -4,8 +4,8 @@ import React, { useState } from "react";
 interface LinkButtonProps {
   label?: string;
   href?: string;
-  onClick?;
-  className?;
+  onClick?: (e: any) => any;
+  className?: string;
 }
 
 const LinkButton = (props: LinkButtonProps) => {

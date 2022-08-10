@@ -1,7 +1,7 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
-import { SearchIcon, SlashIcon } from "../Icons";
+import { SearchIcon, SlashIcon } from "../icons";
 import { Box, Stack } from "@mui/material";
 
 const Search = styled("div")(({ theme }) => ({

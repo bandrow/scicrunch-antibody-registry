@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import Searchbar from "./Searchbar";
 import NavLinks from "./NavLinks";
-import { HelpIcon } from "../Icons";
+import { HelpIcon } from "../icons";
 
 const Navbar = () => {
   return (
