@@ -1,3 +1,4 @@
+import { useMediaQuery } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 
 declare module "@mui/material/styles" {
@@ -26,6 +27,11 @@ const theme = createTheme({
   },
   shape: {
     borderRadius: 8,
+  },
+  mixins: {
+    toolbar: {
+      "@media(min-width:600px)": { minHeight: 72 },
+    },
   },
   typography: {
     fontFamily: "'proxima-nova', 'sans-serif'",

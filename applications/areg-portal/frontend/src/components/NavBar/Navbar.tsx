@@ -12,6 +12,7 @@ import {
 import Searchbar from "./Searchbar";
 import NavLinks from "./NavLinks";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import { HelpIcon } from "../Icons";
 
 const Navbar = () => {
   return (
@@ -52,27 +53,28 @@ const Navbar = () => {
                 display: "flex",
                 flexGrow: 1,
                 justifyContent: "flex-end",
+                maxHeight: "2.5rem",
               }}
             >
-              <Box
-                sx={(theme) => ({
-                  margin: theme.spacing(0, 2),
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: theme.palette.grey["400"],
-                })}
-              >
-                <IconButton disableRipple>
-                  <HelpOutlineIcon
+              <Stack direction="row" spacing={1.5}>
+                <IconButton
+                  disableRipple
+                  sx={{
+                    p: 1.25,
+                  }}
+                >
+                  <HelpIcon
                     sx={{
                       width: "1.25rem",
                       heigth: "1.25rem",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
                     }}
                   />
                 </IconButton>
-              </Box>
-              <Button>Log in / Register</Button>
+                <Button sx={{ px: 1.75, py: 1 }}>Log in / Register</Button>
+              </Stack>
             </Box>
           </Toolbar>
         </Container>

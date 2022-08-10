@@ -1,7 +1,7 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
+import { SearchIcon, SlashIcon } from "../Icons";
 import { Box, Stack, Typography } from "@mui/material";
 
 const Search = styled("div")(({ theme }) => ({
@@ -34,15 +34,12 @@ export default function Searchbar() {
         display="flex"
         alignItems="center"
         width="100%"
-        sx={(theme) => ({ ml: theme.spacing(1) })}
+        sx={{ ml: 1 }}
       >
         <SearchIcon
-          sx={(theme) => ({
-            width: "1.3rem",
-            color: theme.palette.grey["400"],
-          })}
+          sx={{ width: "1.125rem", height: "1.125rem", m: "0.125rem" }}
         />
-        <StyledInputBase placeholder="Search for catalog number…" />
+        <StyledInputBase placeholder="Search for catalog number" />
         <Box
           sx={(theme) => ({
             bgcolor: "grey.200",
@@ -55,9 +52,7 @@ export default function Searchbar() {
             p: theme.spacing(1),
           })}
         >
-          <Typography sx={{ color: "grey.400", fontWeight: "bold" }}>
-            /
-          </Typography>
+          <SlashIcon sx={{ width: "1rem", height: "1rem" }} />
         </Box>
       </Stack>
     </Search>
