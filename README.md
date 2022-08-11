@@ -92,12 +92,12 @@ On google cloud, the **Compute Engine persistent disk CSI Driver** must be enabl
 
 ### Install and upgrade with Helm
 
-1. Create the namespace `kubectl create ns areg2`
-1. Run  `helm install areg2 deployment/helm  --namespace areg2` to install.
-1. Run `kubectl create rolebinding areg-admin-default --clusterrole=admin --serviceaccount=areg2:default -n areg2` to allow workflows to run on namespace areg2
+1. Create the namespace `kubectl create ns areg`
+1. Run  `helm install areg deployment/helm  --namespace areg` to install.
+1. Run `kubectl create rolebinding areg-admin-default --clusterrole=admin --serviceaccount=areg:default -n areg` to allow workflows to run on namespace areg
 
 To upgrade an existing deployment, use:
 
 ```
-helm upgrade areg2 deployment/helm --namespace areg2 --install --reset-values [--force]
+helm upgrade areg deployment/helm --namespace areg --install --reset-values [--force]
 ```

@@ -1,6 +1,6 @@
 harness:
   subdomain: areg-portal
-  secured: true
+  secured: false
   service:
     port: 8080
     auto: true
@@ -21,12 +21,14 @@ harness:
   use_services:
   - name: common
   uri_role_mapping:
-  - uri: /*
+  - uri: /admin/*
     roles:
     - areg_portal:areg_portal-administrator
     - areg_portal:areg_portal-manager
     - areg_portal:areg_portal-user
     require-any-role: true
+  - uri: /
+    white-listed: true
   database:
     auto: true
     type: postgres

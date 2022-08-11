@@ -60,8 +60,13 @@ async def add_process_time_header(request: Request, call_next):
 if os.environ.get('KUBERNETES_SERVICE_HOST', None):
     # init the auth service when running in/for k8s
     from cloudharness_django.services import get_auth_service, init_services
-
-    init_services()
+    import time
+    def init():
+        try:
+            init_services()
+        except:
+            time.sleep(10)
+            init()
     # start the kafka event listener when running in/for k8s
     import cloudharness_django.services.events
 
